@@ -1,0 +1,32 @@
+{
+    "name": "yuanshuai/ys-webuploader",
+    "description": "yiismarty-webuploader",
+    "license": "null",
+	"keywords": ["ys-webuploader"],
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "yuanshuai",
+            "email": "he19970108he@163.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "bower-asset/webuploader_fex":"*",
+        "bower-asset/cropper":"*"
+    },
+    "autoload": {
+        "psr-4": {
+            "yuanshuai\\webuploader\\": ""
+        }
+    },
+    "extra": {
+        "asset-repositories": [
+            {
+                "type": "bower-vcs",
+                "url": "https://github.com/fex-team/webuploader.git"
+            }
+        ]
+    }
+}

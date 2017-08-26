@@ -1,0 +1,22 @@
+<?php
+return [
+    'redisConfig'=>[
+        '6380'=>[
+            //Redis一主多从支持
+            'master'=>[
+                'host'=>'127.0.0.1',
+                'port'=>'6380',
+                'password'=>'123456',
+                'timeout'=>'3'
+            ],
+            'slaves'=>[
+                [
+                    'host'=>'127.0.0.1',
+                    'port'=>'6380',
+                    'password'=>'123456',
+                    'timeout'=>'3'
+                ]
+            ]
+        ],
+    ]
+];
