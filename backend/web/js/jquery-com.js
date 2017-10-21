@@ -156,39 +156,28 @@ function checkRequire(objJquery,msg)
         result = (theTime1 > 0) ? c.zeroFix(theTime1) + ":" + result : "00:" + result;
         return (theTime2 > 0) ? c.zeroFix(theTime2) + ":" + result : "00:" + result;
     };
-
-    /**
-     * 日期插件插件
-     * @param selector
-     */
-    c.layoutDatePicker = function (selector, max) {
-        max = max ? max : '2099-06-16';
-        laydate({
-            elem: selector,
-            event: 'click',
-            format: 'YYYY-MM-DD',
-            max: max,
-            istime: false,
-            isclear: true,
-            issure: false
-        });
+    
+    c.alert=function (content,title) {
+        title = title ? title : '操作提示';
+        $('#commonModal_title').html(title);
+        $('#commonModal_body').html(content);
+        $('#commonModal_ok').hide();
+        $('#commonModal').modal('show');
     };
-
-    /**
-     * 时间插件
-     * @param selector
-     * @param max
-     */
-    c.layoutDateTimePicker = function (selector, max) {
-        max = max ? max : '2099-06-16';
-        laydate({
-            elem: selector,
-            event: 'click',
-            format: 'YYYY-MM-DD hh:mm:ss',
-            max: max,
-            istime: true,
-            isclear: true,
-            issure: false
+    
+    c.comfirm=function (content,callback,title) {
+        title = title ? title : '操作提示';
+        $('#commonModal_ok').show();
+        $('#commonModal_title').html(title);
+        $('#commonModal_body').html(content);
+        $('#commonModal').modal('show');
+        
+        $('#commonModal_ok').on('click',function () {
+            callback(true);
+        });
+        
+        $('#commonModal_cancel').on('click',function () {
+            callback(false);
         });
     };
 }(jQuery));

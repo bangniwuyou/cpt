@@ -24,6 +24,12 @@ class AsynController extends BaseController
      */
     protected $tasks;
 
+    /**服务器标识
+     * @var string
+     * @author 姜海强 <jhq0113@163.com>
+     */
+    private $_server;
+
     /**
      * @author 姜海强 <jhq0113@163.com>
      */
@@ -201,17 +207,37 @@ class AsynController extends BaseController
     }
 
     /**执行任务
+     * @param string $server               服务器名称
      * @author 姜海强 <jhq0113@163.com>
      */
-    public function actionRun()
+    public function actionRun($server=Task::SERVER_REGULAR)
     {
-        if(isset($this->tasks))
+        $this->_server      = $server;
+        $tasks              =  \Yii::$app->params['tasks'];
+
+        $this->writeLog($server);
+
+        if(!empty($tasks))
         {
-            foreach ($this->tasks as $task)
+            if(!isset($tasks[ $this->_server]) || empty($tasks[ $this->_server ]))
             {
-                if($this->isExecute($task))
+                $this->writeLog('没有任务需要执行');
+                echo '没有任务需要执行';
+                die;
+            }
+
+            $tasks = $tasks[ $this->_server ];
+
+            foreach ($tasks as $task)
+            {
+                $task['class']=Task::class;
+                $taskObj = \Yii::createObject($task);
+
+                $this->tasks[] = $taskObj;
+
+                if($this->isExecute($taskObj))
                 {
-                    $this->executeTask($task);
+                    $this->executeTask($taskObj);
                 }
             }
         }

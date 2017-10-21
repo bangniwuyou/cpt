@@ -49,6 +49,19 @@ class ComHelper extends IUtils
         return $ucFirst ? ucfirst($str) : $str;
     }
 
+    /**中线分割转驼峰
+     * @param string $str             字符串
+     * @param bool   $ucFirst         true为大驼峰，false小驼峰
+     * @return mixed|string
+     * @author 姜海强 <jhq0113@163.com>
+     */
+    public static function middleLine2TuoFeng($str,$ucFirst=false)
+    {
+        $str = ucwords(str_replace('-', ' ', $str));
+        $str = str_replace(' ','',lcfirst($str));
+        return $ucFirst ? ucfirst($str) : $str;
+    }
+
     /**小驼峰变下划线
      * @param string $str
      * @return mixed

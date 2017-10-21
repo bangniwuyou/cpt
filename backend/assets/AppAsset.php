@@ -18,16 +18,13 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
     ];
+
     public $js = [
-        ['js/jquery-com.js','position'=>View::POS_HEAD],
-        ['js/ext/ajaxfileupload.js','position'=>View::POS_BEGIN]
     ];
+
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapPluginAsset',
-        'backend\assets\LaydateAsset',
-        'backend\assets\HighChartsAsset',
-        'backend\assets\UEditorAssets',
         'backend\assets\Md5Asset',
     ];
 }

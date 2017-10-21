@@ -20,7 +20,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'map')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'desc')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'desc')->widget(\bootstrap_datetime_picker\DatetimePickerWidget::class) ?>
+    <?php //echo $form->field($model, 'desc')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '新建' : '修改', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

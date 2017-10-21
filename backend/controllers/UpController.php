@@ -8,8 +8,10 @@
 
 namespace backend\controllers;
 
+use bootstrap_fileinput\DeleteAction;
 use common\utils\ComHelper;
 use common\utils\UploadHelper;
+use summer\UploadAction;
 
 class UpController extends BackendController
 {
@@ -30,7 +32,15 @@ class UpController extends BackendController
                     "imagePathFormat" => "/editor/uploads/images/{yyyy}/{mm}/{dd}/{hh}_{ii}_{ss}_{rand:8}",
                     "imageRoot" => UPLOAD_SERVER_WEB_PATH
                 ]
-            ]
+            ],
+            'summer' =>[
+                'class' => UploadAction::class,
+            ],
+            'input'  =>[
+                'class'         =>  \common\widgets\upload\UploadAction::class,
+                'uploadPath'    =>  \Yii::getAlias('@webroot/bootstrap-uploads'),
+                'urlPrefix'     => 'http://'.$_SERVER['HTTP_HOST'].'/bootstrap-uploads'
+            ],
         ];
     }
 

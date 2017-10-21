@@ -4,6 +4,10 @@ defined('YII_ENV') or define('YII_ENV', 'dev');
 
 $rootDir=dirname(__DIR__);
 require($rootDir . '/../vendor/autoload.php');
+
+require ($rootDir . '/../common/widgets/summernote/autoload.php');
+require ($rootDir . '/../common/widgets/bootstrap-datetimepicker/autoload.php');
+
 require($rootDir . '/../vendor/yiisoft/yii2/Yii.php');
 require($rootDir . '/../common/config/bootstrap.php');
 require($rootDir . '/config/bootstrap.php');

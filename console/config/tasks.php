@@ -15,12 +15,33 @@
 ],
  */
 return [
-    'testMinute'    =>  [
-        'pattern' => '* * * * *',
-        'route'   => 'test/index'
+
+    /**
+     * 定时任务服务器
+     */
+    \console\models\popo\Task::SERVER_REGULAR=>[
+        'testMinute'    =>  [
+            'pattern' => '* * * * *',
+            'route'   => 'test/index'
+        ],
+        'testSecond'    =>  [
+            'pattern'   =>  '* * * * *',
+            'route'     =>  'test/second'
+        ]
     ],
-    'testSecond'    =>  [
-        'pattern'   =>  '* * * * *',
-        'route'     =>  'test/second'
-    ]
+
+    /**
+     * 文件服务器
+     */
+    \console\models\popo\Task::SERVER_FILE=>[
+        'testMinute'    =>  [
+            'pattern' => '* * * * *',
+            'route'   => 'test/index'
+        ],
+        'testSecond'    =>  [
+            'pattern'   =>  '* * * * *',
+            'route'     =>  'test/second'
+        ]
+    ],
+
 ];

@@ -6,6 +6,7 @@
 
     \backend\assets\AppAsset::register($this);
 
+    \backend\assets\CommonAsset::register($this);
     /**
      * 当前模块控制器列表
      */

@@ -335,9 +335,12 @@ abstract class IDb extends IService
      */
     public function getListWithIdPagination($where='',$sort=SORT_DESC,$params=[],$useMaster=false)
     {
+
         $start = ComHelper::fIntG('start');
         $limit = ComHelper::fIntG('pageSize');
 
+        $limit = ($limit ===0) ? PAGE_SIZE : $limit;
+        $limit = $limit > 100  ? 100 : $limit;
         $data=[
             'start'         =>  $start,
             'pageSize'      =>  $limit,
@@ -364,16 +367,20 @@ abstract class IDb extends IService
         //表名称
         $tableName = $this->getTableName();
 
-        $count=$this->query('SELECT COUNT(*) AS `count`'.$idSelect.' FROM `'.$tableName.'` '.$where.' ',[],$useMaster);
+        $count=$this->query('SELECT COUNT(*) AS `count`'.$idSelect.' FROM '.$tableName.' '.$where.' ',[],$useMaster);
 
         $data['totalCount'] =   (int)$count[0]['count'];
 
         //如果有数据
         if($data['totalCount'] >0)
         {
-            $where = empty($where) ? ' WHERE '.$idWhere.' ' : $where.' AND ('.$idWhere.') ';
+            if(!empty($idWhere))
+            {
+                $where = empty($where) ? ' WHERE '.$idWhere.' ' : $where.' AND ('.$idWhere.') ';
+            }
+
             //查分页数据
-            $data['list']=$this->query('SELECT '.$this->formatFields($this->fields).' FROM `'.$tableName.'` '.$where.' ORDER BY `'.$this->primaryKey.'` '.$sortString.' LIMIT '.(int)$limit,
+            $data['list']=$this->query('SELECT '.$this->formatFields($this->fields).' FROM '.$tableName.' '.$where.' ORDER BY `'.$this->primaryKey.'` '.$sortString.' LIMIT '.(int)$limit,
                 $params,
                 $useMaster);
 

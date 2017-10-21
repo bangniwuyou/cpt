@@ -8,7 +8,11 @@
 
 namespace common\service;
 
-
+/**
+ * Class User
+ * @package common\service
+ * @author 姜海强 <jhq0113@163.com>
+ */
 class User extends Service
 {
     /**

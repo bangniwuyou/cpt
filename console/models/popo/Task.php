@@ -17,6 +17,16 @@ use common\base\IPopo;
  */
 class Task extends IPopo
 {
+    /**
+     * 定时任务服务器
+     */
+    const SERVER_REGULAR = 'regular';
+
+    /**
+     * 文件服务器
+     */
+    const SERVER_FILE    = 'file';
+
     /**crontab时间表达式
      * @var
      * @author 姜海强 <jhq0113@163.com>
