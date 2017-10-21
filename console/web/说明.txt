@@ -1,0 +1,19 @@
+定时任务说明文档：
+如果需要使用定时任务,需要按照如下步骤操作：
+
+1.在console/config/bootstrap.php文件中配置服务器可执行php文件的路径
+
+2.编写定时任务逻辑
+
+3.在console/config/tasks.php中配置 服务器 任务路由 执行频率等配置
+
+    服务器crontab脚本，(下面两个按具体情况配置，二者只能存其一，同时出现会执行多次)：
+
+    默认定时任务服务器：
+    * * * * * /usr/local/php5.6/bin/php /data/lnmp/www/cpt/console/web/yii.php asyn/run
+    文件服务器：
+    * * * * * /usr/local/php5.6/bin/php /data/lnmp/www/cpt/console/web/yii.php asyn/run file
+
+    说明：file参数是服务器环境标识
+
+4.支持秒级定时器，具体代码实现可以参考console/controllers/TestController.php
