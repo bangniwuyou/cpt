@@ -69,8 +69,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         if(!item.password){
                             return;
                         }
+                        item.password=$.md5(item.password);
                     }
-                    item.password=$.md5(item.password);
+
                     item.isOn=$('#is_on').val();
                     $.comAjax({
                         url:'<?=Url::toRoute([isset($info)?'edit':'add'])?>',
