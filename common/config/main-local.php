@@ -14,6 +14,7 @@ return [
                 ['dsn' => 'mysql:host=127.0.0.1;port=3336;dbname=qiang_cpt'],
             ],
             'slaveConfig'=>[
+                'charset' => 'utf8',
                 'username' => 'cpt',
                 'password' => '123456',
                 'attributes' => [
