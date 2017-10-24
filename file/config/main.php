@@ -20,7 +20,6 @@ return [
         ],
         'urlManager' => [
             'enableStrictParsing' => false,
-            'rules' => require (__DIR__.'/rules.php'),
         ],
     ],
     'params' => $params,
